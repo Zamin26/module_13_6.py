@@ -11,22 +11,22 @@ bot = Bot(token = api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
 
-class UserState(StateGroup):                                        # наследованный от StatesGroup
-    age = State()                                                   # 3 объекта класса
+class UserState(StateGroup):                                             # наследованный от StatesGroup
+    age = State()                                                        # 3 объекта класса
     growth = State()
     weight = State()
 
 
-@dp.callback_query_handler(text = 'calories')                           # handler исправлен'
+@dp.callback_query_handler(text = 'calories')                            # handler исправлен'
 async def set_age(call):
     await call.message.answer('Введите свой возраст:')                   # ответ на сообщение
-    await UserState.age.set()                                       # ввода возраста в атрибут
+    await UserState.age.set()                                            # ввода возраста в атрибут
 
 
 
 
 
-kb = ReplyKeyboardMarkup(resize_keyboard=True)                         # клавиатура и её размеры
+kb = ReplyKeyboardMarkup(resize_keyboard=True)                      # клавиатура и её размеры
 button = KeyboardButton(text = 'Рассчитать')                        # кнопка 1
 kb.add(button)                                                      # добавление в клавиатуру кнопки
 button_2 = KeyboardButton(text= 'Информация')                       # кнопка 2
